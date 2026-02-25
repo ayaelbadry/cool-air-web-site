@@ -42,6 +42,9 @@ public function update(Request $request, Product $product)
     $request->validate([
         'name' => 'required',
         'price' => 'required|numeric',
+        'inStock' => 'required|integer',
+        'description' => 'required|string',
+        'brand'=> 'required|string',
         'category_id' => 'required|exists:categories,id',
     ]);
 
