@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('brand',100)->nullable();
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->text('description');
+            $table->string('type');
             $table->timestamps();
         });
     }

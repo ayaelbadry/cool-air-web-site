@@ -28,15 +28,22 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:100'
+            'name' => 'required|string',
+            'type'=>'required'
         ]);
 
-        Category::create([
-            'name' => $request->name
+        $category = Category::create([
+            'name' => $request->name,
+            'type'=> $request->type,
         ]);
 
-        return redirect()->route('categories.index');
+      if ($request->expectsJson()) {
+        return response()->json($category);
     }
+
+    return redirect()->route('categories.index');
+}
+
 
     public function edit($id)
     {

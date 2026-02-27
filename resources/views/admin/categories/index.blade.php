@@ -8,14 +8,14 @@
 
 <table border="1">
     <tr>
-        <th>ID</th>
+      
         <th>Name</th>
         <th>Actions</th>
     </tr>
 
     @foreach($categories as $category)
         <tr>
-            <td>{{ $category->id }}</td>
+           
             <td>{{ $category->name }}</td>
             <td>
     <a href="{{ route('categories.edit', $category->id) }}">Edit</a>

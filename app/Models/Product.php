@@ -14,8 +14,16 @@ class Product extends Model
     'brand',
     'inStock',
     'category_id',
-];
+    'type',
+    
+    ];
     public function category(){
     return $this->belongsTo(Category::class);
-}
+    }
+    public function ac(){
+        return $this->hasOne(Ac::class);
+    }
+    public function waterFilter(){
+        return $this->hasOne(WaterFilter::class);
+    }
 }

@@ -7,7 +7,13 @@
 <form action="{{ route('categories.store') }}" method="POST">
     @csrf
 
-    <input type="text" name="name" placeholder="Category Name">
+   <input type="text" name="name" placeholder="Category Name">
+
+<select name="type">
+<option value="">Select type</option>
+<option value="ac">AC</option>
+<option value="water_filter">Water Filter</option>
+</select>
     <button type="submit">Save</button>
 
 </form>

@@ -15,6 +15,6 @@ use Illuminate\View\View;
 
 // user routes 
 
-Route::get('/', function () {
-    return View('welcome');
+Route::get('/', function (): View {
+    return View(view: 'welcome');
 });
