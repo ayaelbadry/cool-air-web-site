@@ -10,7 +10,7 @@
 
     <div>
         <label>Name</label>
-        <input type="text" name="name" value="{{ $product->name }}">
+        <input type="text" name="name" value="{{ $product->name }}" readonly>
     </div>
 
     <div>
@@ -23,24 +23,42 @@
     </div>
       <div>
         <label>Description</label>
-        <input type="text" name="description" value="{{ $product->description }}">
+        <input type="text" name="description" value="{{ $product->description }}"readonly>
     </div>
       <div>
         <label>Brand</label>
-        <input type="text" name="brand" value="{{ $product->brand }}">
+        <input type="text" name="brand" value="{{ $product->brand }}" readonly>
     </div>
+ 
 
     <div>
         <label>Category</label>
-        <select name="category_id">
-            @foreach($categories as $category)
-                <option value="{{ $category->id }}"
-                    {{ $product->category_id == $category->id ? 'selected' : '' }}>
-                    {{ $category->name }}
-                </option>
-            @endforeach
-        </select>
+        <input type="text" value="{{ $product->category->name }}" readonly>
     </div>
+
+    @if($product->type == 'ac')
+
+<div>
+<label>Horsepower</label>
+<input type="text" value="{{ $product->ac->horsepower }}" readonly>
+</div>
+
+<div>
+<label>Energy Rating</label>
+<input type="text" value="{{ $product->ac->energy_rating }}" readonly>
+</div>
+
+@endif
+
+
+@if($product->type == 'water_filter')
+
+<div>
+<label>Number of Stages</label>
+<input type="text" value="{{ $product->waterFilter->number_of_stages }}" readonly>
+</div>
+
+@endif
 
     <button type="submit">Update</button>
 
