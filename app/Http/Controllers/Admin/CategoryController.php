@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Validation\Rule;
+
 class CategoryController extends Controller
 {
     //
@@ -28,7 +31,13 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string',
+            'name' => [
+            'required',
+            Rule::unique('categories')->where(function ($query) use ($request) {
+                return $query->where('name', $request->name)
+                             ->where('type', $request->type);
+            }),
+        ],
             'type'=>'required'
         ]);
 
